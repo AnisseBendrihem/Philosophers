@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:06:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/03 04:56:45 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/03 21:34:11 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,43 @@ static int	valid_all_num(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (!valid_number(av[i]) || ft_atol(av[i]) > INT_MAX)
+		if (!valid_number(av[i]) || (ft_atol(av[i]) > INT_MAX))
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-static void	init_agora(t_agora *god, int ac, char **av)
+static int	init_agora(t_agora *god, int ac, char **av)
 {
 	god->philosophers = ft_atol(av[1]);
+	if (god->philosophers <= 0)
+		return (0);
 	god->time_to_die = ft_atol(av[2]);
+	if (god->time_to_die <= 0)
+		return (0);
 	god->time_to_eat = ft_atol(av[3]);
+	if (god->time_to_eat <= 0)
+		return (0);
 	god->time_to_sleep = ft_atol(av[4]);
+	if (god->time_to_sleep <= 0)
+		return (0);
 	if (ac == 6)
+	{
 		god->meals = ft_atol(av[5]);
+		if (god->meals <= 0)
+			return (0);
+	}
+	return (1);
 }
 
 int	mother_parsing(t_agora *god, int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
-		return (ft_error(2, "invalid number of arguments"), 0);
+		return (ft_error(2, "invalid number of arguments\n"), 0);
 	if (!valid_all_num(ac, av))
-		return (ft_error(2, "invalid arguments"), 0);
-	init_agora(god, ac, av);
+		return (ft_error(2, "invalid arguments\n"), 0);
+	if (!init_agora(god, ac, av))
+		return (ft_error(2, "argument need to be above 0\n"), 0);
 	return (1);
 }
