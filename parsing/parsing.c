@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:06:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/03 21:34:11 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/07 04:10:24 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,38 @@ static int	valid_all_num(int ac, char **av)
 	return (1);
 }
 
-static int	init_agora(t_agora *god, int ac, char **av)
+static int	init_hueco(t_hueco_mundo *aizen, int ac, char **av)
 {
-	god->philosophers = ft_atol(av[1]);
-	if (god->philosophers <= 0)
+	aizen->arrancar = ft_atol(av[1]);
+	if (aizen->arrancar <= 0 || aizen->arrancar > 200)
 		return (0);
-	god->time_to_die = ft_atol(av[2]);
-	if (god->time_to_die <= 0)
+	aizen->time_to_die = ft_atol(av[2]);
+	if (aizen->time_to_die <= 0)
 		return (0);
-	god->time_to_eat = ft_atol(av[3]);
-	if (god->time_to_eat <= 0)
+	aizen->time_to_eat = ft_atol(av[3]);
+	if (aizen->time_to_eat <= 0)
 		return (0);
-	god->time_to_sleep = ft_atol(av[4]);
-	if (god->time_to_sleep <= 0)
+	aizen->time_to_sleep = ft_atol(av[4]);
+	if (aizen->time_to_sleep <= 0)
 		return (0);
 	if (ac == 6)
 	{
-		god->meals = ft_atol(av[5]);
-		if (god->meals <= 0)
+		aizen->soul = ft_atol(av[5]);
+		if (aizen->soul <= 0)
 			return (0);
 	}
 	return (1);
 }
 
-int	mother_parsing(t_agora *god, int ac, char **av)
+int	mother_parsing(t_hueco_mundo *aizen, int ac, char **av)
 {
 	if (ac < 5 || ac > 6)
 		return (ft_error(2, "invalid number of arguments\n"), 0);
 	if (!valid_all_num(ac, av))
 		return (ft_error(2, "invalid arguments\n"), 0);
-	if (!init_agora(god, ac, av))
-		return (ft_error(2, "argument need to be above 0\n"), 0);
+	if (!init_hueco(aizen, ac, av))
+		return (ft_error(2,
+				"argument value need to be above 0 and adjucas under 200\n"),
+			0);
 	return (1);
 }

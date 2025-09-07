@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   lib.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 02:35:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/03 21:17:31 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/07 04:27:27 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	ft_error(int fd, char *name_error)
+{
+	write(fd, "Error : ", 8);
+	printf("%s", name_error);
+}
 
 int	ft_isdigit(int n)
 {
@@ -45,4 +51,12 @@ long	ft_atol(char *str)
 		i++;
 	}
 	return (result * signe);
+}
+
+long	now_ms(void)
+{
+	struct timeval	tv;
+
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000L) + (tv.tv_usec / 1000L);
 }

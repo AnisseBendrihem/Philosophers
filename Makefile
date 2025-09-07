@@ -6,7 +6,7 @@
 #    By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 23:04:36 by abendrih          #+#    #+#              #
-#    Updated: 2025/09/03 04:51:11 by abendrih         ###   ########.fr        #
+#    Updated: 2025/09/06 22:42:25 by abendrih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,7 @@ INCLUDE_DIR = include
 SRC         = \
 	$(SRC_DIR)/main.c \
 	$(PARSING_DIR)/parsing.c \
-	$(UTILS_DIR)/ft_atoi.c \
-	$(UTILS_DIR)/ft_error.c \
-	$(UTILS_DIR)/ft_split.c \
+	$(UTILS_DIR)/lib.c \
 
 OBJ         = $(SRC:.c=.o)
 
@@ -39,7 +37,7 @@ OBJ         = $(SRC:.c=.o)
 # │         COMPILATION         │
 # └─────────────────────────────┘
 CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror -g3
+CFLAGS      = -Wall -Wextra -Werror -g3 -pthread 
 CPPFLAGS    = -I$(INCLUDE_DIR)
 LDFLAGS     = -pthread
 

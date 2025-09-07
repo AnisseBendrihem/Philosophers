@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:03:31 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/03 21:13:02 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/07 04:27:00 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,36 @@
 # include <unistd.h>   // usleep, write
 // struct
 
-typedef struct s_agora
+// philo.h
+typedef struct s_hueco_mundo
 {
-	int philosophers;  // nombre total de philosophes
-	int time_to_die;   // temps max avant de mourir s'ils ne mangent pas
-	int time_to_eat;   // temps qu'ils passent à manger
-	int time_to_sleep; // temps de repos
-	int meals;         // optionnel : nombre de repas à atteindre
-}		t_agora;
+	int				arrancar;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				soul;
+
+	pthread_mutex_t	*zanpakuto;
+	pthread_mutex_t	order;
+	long			start_ms;
+}					t_hueco_mundo;
+
+typedef struct s_espada
+{
+	int				id;
+	pthread_t		thread;
+	pthread_mutex_t	*l_zanpakuto;
+	pthread_mutex_t	*r_zanpakuto;
+	t_hueco_mundo	*aizen;
+}					t_espada;
 
 // utils
-void	ft_error(int fd, char *name_error);
-char	**ft_split(const char *s, char c);
-long	ft_atol(char *str);
-int		ft_isdigit(int n);
-void	ft_free(char **tab);
+void				ft_error(int fd, char *name_error);
+long				ft_atol(char *str);
+int					ft_isdigit(int n);
+long				now_ms(void);
 
 //  parcing
-int		mother_parsing(t_agora *god, int ac, char **av);
+int					mother_parsing(t_hueco_mundo *aizen, int ac, char **av);
 
 #endif
