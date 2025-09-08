@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:06:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/07 04:10:24 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/07 23:49:56 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,18 @@ static int	init_hueco(t_hueco_mundo *aizen, int ac, char **av)
 	return (1);
 }
 
+static void	empty_mundo(t_hueco_mundo *aizen)
+{
+	aizen->arrancar = 0;
+	aizen->time_to_die = 0;
+	aizen->time_to_eat = 0;
+	aizen->time_to_sleep = 0;
+	aizen->soul = 0;
+}
+
 int	mother_parsing(t_hueco_mundo *aizen, int ac, char **av)
 {
+	empty_mundo(aizen);
 	if (ac < 5 || ac > 6)
 		return (ft_error(2, "invalid number of arguments\n"), 0);
 	if (!valid_all_num(ac, av))

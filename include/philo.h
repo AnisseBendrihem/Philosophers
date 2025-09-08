@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:03:31 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/07 04:27:00 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/08 05:07:43 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 # define PHILO_H
 
 # include <limits.h>
-# include <pthread.h>  // pthread_* (threads et mutex)
-# include <stdio.h>    // printf
-# include <stdlib.h>   // malloc, free, exit
-# include <string.h>   // memset
-# include <sys/time.h> // gettimeofday
-# include <unistd.h>   // usleep, write
+# include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/time.h>
+# include <unistd.h>
 // struct
 
-// philo.h
 typedef struct s_hueco_mundo
 {
 	int				arrancar;
@@ -33,7 +32,7 @@ typedef struct s_hueco_mundo
 
 	pthread_mutex_t	*zanpakuto;
 	pthread_mutex_t	order;
-	long			start_ms;
+	long			born_ms;
 }					t_hueco_mundo;
 
 typedef struct s_espada
@@ -53,5 +52,14 @@ long				now_ms(void);
 
 //  parcing
 int					mother_parsing(t_hueco_mundo *aizen, int ac, char **av);
+
+// philo
+void				espada_status(t_espada *e, char *str);
+void				*routine(void *arg);
+
+// forge
+int					forge_zanpakuto(t_hueco_mundo *aizen);
+void				dismantle_zanpakuto(t_hueco_mundo *aizen);
+int					espada_born(t_hueco_mundo *aizen);
 
 #endif

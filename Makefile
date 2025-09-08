@@ -6,7 +6,7 @@
 #    By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/02 23:04:36 by abendrih          #+#    #+#              #
-#    Updated: 2025/09/06 22:42:25 by abendrih         ###   ########.fr        #
+#    Updated: 2025/09/08 05:04:59 by abendrih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ INCLUDE_DIR = include
 # │           SOURCES           │
 # └─────────────────────────────┘
 SRC         = \
+	$(SRC_DIR)/espadas_life.c \
+	$(SRC_DIR)/forge.c \
 	$(SRC_DIR)/main.c \
 	$(PARSING_DIR)/parsing.c \
 	$(UTILS_DIR)/lib.c \
