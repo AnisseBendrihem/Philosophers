@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 02:35:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/07 04:27:27 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:08:15 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ long	now_ms(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000L) + (tv.tv_usec / 1000L);
+	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }

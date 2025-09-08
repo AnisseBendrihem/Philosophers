@@ -6,12 +6,11 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:04:51 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/08 05:08:18 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/08 07:32:17 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
 
 int	main(int ac, char **av)
 {

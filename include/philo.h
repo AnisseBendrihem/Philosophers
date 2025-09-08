@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:03:31 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/08 05:07:43 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:08:29 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <limits.h>
 # include <pthread.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -38,6 +39,9 @@ typedef struct s_hueco_mundo
 typedef struct s_espada
 {
 	int				id;
+	long			last_meal_ms;
+	bool			alive;
+
 	pthread_t		thread;
 	pthread_mutex_t	*l_zanpakuto;
 	pthread_mutex_t	*r_zanpakuto;

@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 05:03:22 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/08 05:46:28 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/08 15:39:05 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,10 @@ static void	drop_zanpakuto(t_espada *e)
 	if (e->l_zanpakuto == e->r_zanpakuto)
 	{
 		pthread_mutex_unlock(e->l_zanpakuto);
-		espada_status(e, "dropped a fork");
 		return ;
 	}
 	pthread_mutex_unlock(e->l_zanpakuto);
-	espada_status(e, "dropped a fork");
 	pthread_mutex_unlock(e->r_zanpakuto);
-	espada_status(e, "dropped a fork");
 }
 
 void	*routine(void *arg)
@@ -66,9 +63,25 @@ void	*routine(void *arg)
 	t_espada	*e;
 
 	e = (t_espada *)arg;
-	espada_status(e, "is born");
-	take_zanpakuto(e);
-	drop_zanpakuto(e);
+	while (e->alive == true)
+	{
+		take_zanpakuto(e);
+		drop_zanpakuto(e);
+		if ((now_ms() - e->last_meal_ms) < e->aizen->time_to_die)
+		{
+			espada_status(e, "\033[1;35mis eating\033[0m"); // magenta vif
+			usleep(e->aizen->time_to_eat);
+		}
+		else
+		{
+			e->alive = false;
+			espada_status(e, "\033[1;31mis dead\033[0m"); // rouge vif
+			break ;
+		}
+		espada_status(e, "\033[1;36mis sleeping\033[0m"); // cyan vif
+		usleep(e->aizen->time_to_sleep);
+		espada_status(e, "\033[1;32mis thinking\033[0m"); // vert vif
+	}
 	return (NULL);
 }
 
@@ -85,10 +98,12 @@ int	espada_born(t_hueco_mundo *aizen)
 	aizen->born_ms = now_ms();
 	while (i < aizen->arrancar)
 	{
-		espadas[i].id = i;
+		espadas[i].id = i + 1;
 		espadas[i].aizen = aizen;
 		espadas[i].l_zanpakuto = &aizen->zanpakuto[i];
 		espadas[i].r_zanpakuto = &aizen->zanpakuto[(i + 1) % aizen->arrancar];
+		espadas[i].last_meal_ms = now_ms();
+		espadas[i].alive = true;
 		if (pthread_create(&espadas[i].thread, NULL, routine, &espadas[i]))
 			return (1);
 		i++;
