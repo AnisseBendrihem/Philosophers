@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:06:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/07 23:49:56 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/09 18:30:27 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void	empty_mundo(t_hueco_mundo *aizen)
 	aizen->time_to_die = 0;
 	aizen->time_to_eat = 0;
 	aizen->time_to_sleep = 0;
+	aizen->born_ms = 0;
 	aizen->soul = 0;
 }
 
@@ -87,7 +88,6 @@ int	mother_parsing(t_hueco_mundo *aizen, int ac, char **av)
 		return (ft_error(2, "invalid arguments\n"), 0);
 	if (!init_hueco(aizen, ac, av))
 		return (ft_error(2,
-				"argument value need to be above 0 and adjucas under 200\n"),
-			0);
+				"value need to be above 0 and arrancar under 200\n"), 0);
 	return (1);
 }

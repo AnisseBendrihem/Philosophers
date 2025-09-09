@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:04:51 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/08 07:32:17 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/09 18:49:36 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if (!mother_parsing(&aizen, ac, av))
 		return (1);
-	if (forge_zanpakuto(&aizen) != 0)
+	if (forge_zanpakuto(&aizen) != 0) //initialise un tableau de mutex (fourchettes) du nombre de philo
 		return (2);
 	if (espada_born(&aizen) != 0)
 	{

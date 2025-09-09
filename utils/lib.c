@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 02:35:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/08 15:08:15 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/09 18:28:41 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,12 @@ long	now_ms(void)
 
 	gettimeofday(&tv, NULL);
 	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
+}
+
+void	ft_usleep(long ms)
+{
+	long	start;
+	start = now_ms();
+	while ((now_ms() - start) < ms)
+		usleep(500); // micro-pause pour ne pas bloquer le CPU
 }
