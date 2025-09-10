@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:06:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 17:22:00 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/10 21:06:09 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	empty_mundo(t_hueco_mundo *aizen)
 	aizen->time_to_eat = 0;
 	aizen->time_to_sleep = 0;
 	aizen->born_ms = 0;
-	aizen->meal = 0;
+	aizen->meal = -1;
 }
 
 int	mother_parsing(t_hueco_mundo *aizen, int ac, char **av)

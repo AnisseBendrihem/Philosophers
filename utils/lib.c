@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 02:35:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/09 18:28:41 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/10 22:06:14 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ long	now_ms(void)
 void	ft_usleep(long ms)
 {
 	long	start;
+
 	start = now_ms();
 	while ((now_ms() - start) < ms)
-		usleep(500); // micro-pause pour ne pas bloquer le CPU
+		usleep(500);
 }
