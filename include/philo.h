@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:03:31 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/09 21:26:53 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/10 20:09:07 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef struct s_hueco_mundo
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				soul;
+	int				meal;
+	pthread_mutex_t	state;
 	bool			alive;
 
 	pthread_mutex_t	*zanpakuto;
@@ -41,6 +42,7 @@ typedef struct s_hueco_mundo
 typedef struct s_espada
 {
 	int				id;
+	long			eaten;
 	long			last_meal_ms;
 
 	pthread_t		thread;
@@ -67,5 +69,7 @@ void				*routine(void *arg);
 int					forge_zanpakuto(t_hueco_mundo *aizen);
 void				dismantle_zanpakuto(t_hueco_mundo *aizen);
 int					espada_born(t_hueco_mundo *aizen);
+int					take_zanpakuto(t_espada *e);
+void				drop_zanpakuto(t_espada *e);
 
 #endif
