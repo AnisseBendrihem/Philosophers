@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 22:08:15 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 22:48:29 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/10 23:02:43 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,11 @@ static int	create_espadas(t_hueco_mundo *aizen, t_espada *espadas)
 int	espada_born(t_hueco_mundo *aizen)
 {
 	int			i;
-	t_espada	espadas[200];
+	t_espada	*espadas;
 
+	espadas = malloc(sizeof(*espadas) * aizen->arrancar);
+	if (!espadas)
+		return (1);
 	pthread_mutex_init(&aizen->order, NULL);
 	pthread_mutex_init(&aizen->state, NULL);
 	aizen->alive = true;
