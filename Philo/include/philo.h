@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 23:03:31 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 22:16:19 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/11 19:49:16 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void				ft_error(int fd, char *name_error);
 long				ft_atol(char *str);
 int					ft_isdigit(int n);
 long				now_ms(void);
-void				ft_usleep(long ms);
+void				ft_usleep(long ms, t_hueco_mundo *a);
 
 /* --------------------------- parsing/parsing.c ---------------------------- */
 int					mother_parsing(t_hueco_mundo *aizen, int ac, char **av);

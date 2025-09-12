@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 04:56:58 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 21:58:30 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:22:23 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	take_zanpakuto(t_espada *e)
 	}
 	else
 	{
+		ft_usleep(1, e->aizen);
 		pthread_mutex_lock(e->r_zanpakuto);
 		espada_status(e, "has taken a fork");
 		pthread_mutex_lock(e->l_zanpakuto);

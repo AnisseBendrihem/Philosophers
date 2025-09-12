@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 02:35:29 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 22:06:14 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:16:01 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,15 @@ long	now_ms(void)
 	return ((tv.tv_sec * 1000L) + (tv.tv_usec / 1000L));
 }
 
-void	ft_usleep(long ms)
+void	ft_usleep(long ms, t_hueco_mundo *a)
 {
 	long	start;
 
 	start = now_ms();
 	while ((now_ms() - start) < ms)
-		usleep(500);
+	{
+		usleep(1000);
+		if (is_alive(a) == false)
+			return ;
+	}
 }

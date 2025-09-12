@@ -6,7 +6,7 @@
 /*   By: abendrih <abendrih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 05:03:22 by abendrih          #+#    #+#             */
-/*   Updated: 2025/09/10 22:18:10 by abendrih         ###   ########.fr       */
+/*   Updated: 2025/09/11 20:05:46 by abendrih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	espada_status(t_espada *e, char *str)
 void	espada_death_status(t_espada *e)
 {
 	pthread_mutex_lock(&e->aizen->order);
-	printf("%ld %d died\n", now_ms() - (e->aizen->born_ms), e->id);
+	printf("%ld %d \033[1;31mdied\n\033[0m", now_ms() - (e->aizen->born_ms),
+		e->id);
 	pthread_mutex_unlock(&e->aizen->order);
 }
